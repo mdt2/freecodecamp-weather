@@ -1,0 +1,47 @@
+body {
+	background: rgba(0,0,0,0.7);
+	background-size: cover;
+	font-family:'Lato', sans-serif;
+	width:100vw;
+	height:100vh;
+	max-height:100vh;
+	color:white;
+	text-align:center;
+	padding-top:100px;
+}
+
+.content {
+	margin:0 auto;
+	text-align:center;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap:wrap;
+	padding:20px;
+}
+
+.item {
+	align-content:center;
+	margin:0;
+	padding:20px 16px;
+	margin-right:16px;
+}
+
+.item:first-child {
+	margin-right:0;
+	padding-right:8px;
+}
+
+.temp-units {
+	padding-left:0;
+}
+
+.temp-units-button {
+	background:none;
+	color:white;
+	border:none;
+	font-size:16px;
+	padding:0;
+	outline:none;
+	cursor:pointer;
+}
