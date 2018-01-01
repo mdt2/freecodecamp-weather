@@ -85,44 +85,34 @@ function printWeatherDescription(data) {
 	}
 }
 
-function setBackgroundImage(data) {
-	console.log('you did a thing w images');
-	if (data.weather[0].main == 'Rain') {
-		console.log('rainy');
-		if (daytime > 4 && daytime < 18) {
-			console.log('daytime');
-			$('body').css('background-image', 'url(img/rainy.jpg)');
-		}
-		else {
-			console.log('nighttime');
-			$('body').css('background-image', 'url(img/rainy-night.jpg');
-		}
+function applyImage(daytime, nighttime) {
+	if (daytime > 4 && daytime < 18) {
+		console.log('daytime');
+		$('body').css('background-image', 'url(img/' + daytime + ')');
 	}
-
-	else if (data.weather[0].main == 'Clear') {
-		console.log('clear');
-		if (daytime > 4 && daytime < 18) {
-			console.log('daytime');	
-			$('body').css('background-image', 'url(img/clear.jpg)');
-		}
-		else {
-			console.log('nighttime');
-			$('body').css('background-image', 'url(img/clear-night.jpg');
-		}
-	}
-
-	else if (data.weather[0].main == 'Clouds') {
-		console.log('clouds');
-		if (daytime > 4 && daytime < 18) {
-			console.log('daytime');
-			$('body').css('background-image', 'url(img/cloudy.jpg)');
-		}
-		else {
-			console.log('nighttime');
-			$('body').css('background-image', 'url(img/cloudy-night.jpg');
-		}
+	else {
+		console.log('nighttime');
+		$('body').css('background-image', 'url(img/' + nighttime + ')');
 	}
 }
+
+function setBackgroundImage(data) {
+	switch(data.weather[0].main) {
+		case 'Clear':
+			applyImage('clear.jpg', 'clear-night.jpg');
+			break;
+		case 'Clouds':
+			applyImage('cloudy.jpg', 'cloudy-night.jpg');
+			break;
+		case 'Rainy':
+			applyImage('rainy.jpg', 'rainy-night.jpg');
+			break;
+		default:
+			applyImage('clear.jpg', 'clear-night.jpg');
+			break;
+	}
+}
+
 
 function convertToF() {
 	temperature = Math.round(temperature * 1.8 + 32);
